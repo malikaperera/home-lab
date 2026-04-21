@@ -1,0 +1,52 @@
+groups:
+  - name: host
+    rules:
+      - alert: HighCPU
+        expr: 100 - (avg by(instance) (rate(node_cpu_seconds_total{mode="idle"}[5m])) * 100) > 95
+        for: 15m
+        labels:
+          severity: warning
+        annotations:
+          summary: "CPU above 95% for 15 min on {{ $labels.instance }}"
+
+      - alert: HighMemory
+        expr: (1 - (node_memory_MemAvailable_bytes / node_memory_MemTotal_bytes)) * 100 > 90
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "RAM above 90% for 5 min on {{ $labels.instance }}"
+
+      - alert: DiskSpaceWarning
+        expr: (1 - (node_filesystem_avail_bytes{fstype!="tmpfs",mountpoint="/"} / node_filesystem_size_bytes{fstype!="tmpfs",mountpoint="/"})) * 100 > 80
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Disk above 80% on {{ $labels.instance }}"
+
+      - alert: DiskSpaceCritical
+        expr: (1 - (node_filesystem_avail_bytes{fstype!="tmpfs",mountpoint="/"} / node_filesystem_size_bytes{fstype!="tmpfs",mountpoint="/"})) * 100 > 90
+        for: 1m
+        labels:
+          severity: critical
+        annotations:
+          summary: "Disk above 90% on {{ $labels.instance }} — act now"
+
+  - name: containers
+    rules:
+      - alert: ContainerRestarting
+        expr: increase(container_start_time_seconds{name!=""}[10m]) > 3
+        for: 0m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Container {{ $labels.name }} restarted >3 times in 10 min"
+
+      - alert: ContainerDown
+        expr: absent(container_last_seen{name=~"roderick|forge|zuko|sentinel|merlin"})
+        for: 2m
+        labels:
+          severity: critical
+        annotations:
+          summary: "Core agent container missing: {{ $labels.name }}"
