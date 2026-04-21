@@ -35,6 +35,8 @@ The personal AI ecosystem keeps clear role boundaries:
 
 See [docs/orion-system-context.md](docs/orion-system-context.md) for the full operating context.
 
+See [docs/server-desktop-split.md](docs/server-desktop-split.md) for the authoritative boundary between the always-on mini PC server and the Windows desktop after migration.
+
 ## First Boot Checklist
 
 1. Install Ubuntu Server 24.04 LTS.
