@@ -4,6 +4,14 @@ This is the source of truth for what runs on the always-on mini PC server versus
 
 The goal is simple: the server is the home of ORION. The desktop becomes an optional acceleration box and personal workstation, not a second copy of the system.
 
+## Operating Principle
+
+The mini PC server is optimized for availability, fast coordination, and continuous background progress. It should make Roderick, Orion, and Zuko feel responsive to Malika at all times.
+
+The desktop PC is the heavy reasoning lane. When the desktop is online, large-model work should route there. When it is offline, heavyweight reasoning should be queued, summarized, delayed, or processed slowly in the background on the server without degrading user-facing responsiveness.
+
+The server can spend time, but it cannot spend responsiveness. Background LLM work must be bounded by concurrency, prompt size, token budget, and timeout rules so direct Telegram/dashboard interactions remain quick.
+
 ## Absolute Rules
 
 - Run only one production ORION/Roderick stack at a time.
@@ -48,6 +56,14 @@ Full-time services:
 - Optional always-on local model fallback:
   - Ollama on the mini PC for lightweight models such as `qwen3:4b`, `qwen3:8b`, `phi3:mini`, or another small CPU-friendly model.
 
+Server-local LLM work should prefer:
+
+- `qwen3:4b` for Roderick/Orion/Zuko user-facing coordination.
+- `qwen3:8b` for bounded background research/planning when desktop GPU is unavailable.
+- `qwen2.5-coder:7b` for local code/validation work.
+
+Avoid making heavy desktop models required for server boot or normal operation.
+
 Later server services can include Pi-hole or AdGuard Home, Portainer, n8n, media services, and the separate ORION astrology stack.
 
 ## Desktop PC: Optional Heavy Compute Only
@@ -58,6 +74,7 @@ Allowed desktop responsibilities:
 
 - Ollama large model acceleration using the GPU.
 - Large models such as `qwen3:14b`, `qwen3:30b`, and `qwen2.5-coder:14b`, if the hardware can run them reliably.
+- Deep reasoning queues that are not urgent for direct user engagement.
 - Music production and personal workstation use.
 - Temporary Claude/Codex interactive development sessions.
 - Emergency rollback only, after the server stack is stopped.
@@ -101,6 +118,7 @@ Meaning:
 - Primary: desktop GPU Ollama, when the desktop is online.
 - Fallback: mini PC Ollama, always available but slower.
 - If the desktop is offline, agents must degrade gracefully instead of failing.
+- Direct interaction agents must not wait indefinitely for desktop-heavy reasoning. They should acknowledge, queue, and continue.
 
 On Linux Docker, `host.docker.internal` must be mapped through `extra_hosts` in Compose. The `telegram-claude-agent` compose file already supports this pattern.
 
@@ -201,4 +219,3 @@ docker compose down
 3. Record why rollback happened and what needs to be fixed before the next cutover.
 
 Never run server and desktop production stacks at the same time.
-
