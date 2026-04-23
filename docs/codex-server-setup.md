@@ -30,7 +30,7 @@ On the server:
 ```bash
 mkdir -p ~/src
 cd ~/src
-git clone git@github.com:malikaperera/home-lab.git
+git clone git@github.com:<your-github-username>/home-lab.git
 cd home-lab
 bash scripts/install-codex-cli.sh
 ```
@@ -40,7 +40,7 @@ The installer:
 - installs base build tools
 - installs Node.js 22 if the server Node version is missing or too old
 - installs the official `@openai/codex` CLI globally
-- writes server-specific ORION guidance into `~/.codex/AGENTS.md`
+- writes server-specific guidance into `~/.codex/AGENTS.md`
 
 ## Sign In
 
@@ -64,7 +64,7 @@ codex
 - Use Codex interactively over SSH or from a terminal on the server.
 - Do not run Codex as a background daemon.
 - Do not let Codex start duplicate desktop/server stacks.
-- For ORION migration work, read `docs/server-desktop-split.md` first.
+- For migration work, read `docs/server-desktop-split.md` first.
 - For runtime service changes, prefer Git commits and Docker Compose changes over manual drift.
 
 ## Verification

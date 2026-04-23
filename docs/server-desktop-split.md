@@ -14,7 +14,7 @@ The server can spend time, but it cannot spend responsiveness. Background LLM wo
 
 ## Absolute Rules
 
-- Run only one production ORION/Roderick stack at a time.
+- Run only one production agent stack at a time.
 - Run only one writer against `data/roderick.db`.
 - Run only one Zuko automation instance, otherwise job scans and applications can duplicate.
 - Run only one Forge worker, otherwise code patches and approval state can conflict.
@@ -24,13 +24,13 @@ The server can spend time, but it cannot spend responsiveness. Background LLM wo
 
 ## Mini PC Server: Runs Full Time
 
-The mini PC is the always-on infrastructure node. It should run Ubuntu Server, Docker, Tailscale, and the long-lived ORION services.
+The mini PC is the always-on infrastructure node. It should run Ubuntu Server, Docker, Tailscale, and the long-lived agent services.
 
 Full-time services:
 
 - Docker Engine and Docker Compose
 - Tailscale
-- `telegram-claude-agent` stack:
+- primary agent stack:
   - `roderick`
   - `forge`
   - `api`
@@ -92,14 +92,14 @@ Not allowed on desktop after cutover:
 
 iPhone and laptop are control surfaces only.
 
-They should access ORION through:
+They should access the system through:
 
 - Telegram bots
 - Tailscale
 - Dashboard URL through Tailscale, for example `http://<server-tailscale-ip>:3000`
 - SSH into the server when needed
 
-They should not host persistent ORION services.
+They should not host persistent agent services.
 
 ## LLM Routing
 
@@ -120,7 +120,7 @@ Meaning:
 - If the desktop is offline, agents must degrade gracefully instead of failing.
 - Direct interaction agents must not wait indefinitely for desktop-heavy reasoning. They should acknowledge, queue, and continue.
 
-On Linux Docker, `host.docker.internal` must be mapped through `extra_hosts` in Compose. The `telegram-claude-agent` compose file already supports this pattern.
+On Linux Docker, `host.docker.internal` must be mapped through `extra_hosts` in Compose. The agent compose file already supports this pattern.
 
 ## Migration Cutover
 

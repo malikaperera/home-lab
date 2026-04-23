@@ -9,6 +9,6 @@ Current files:
 Future files:
 
 - `docker-compose.automation.yml`: n8n, Redis, Postgres.
-- `docker-compose.agents.yml`: ORION/Roderick migrated services.
+- `docker-compose.agents.yml`: primary agent services.
 - `docker-compose.llm.yml`: Ollama or llama.cpp services if hosted on the mini PC.
 - `docker-compose.media.yml`: generic media services, if needed later.

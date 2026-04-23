@@ -9,7 +9,7 @@ Use Ubuntu Server 24.04 LTS. Enable OpenSSH during install.
 Recommended hostname:
 
 ```text
-orion-mini
+homelab-mini
 ```
 
 ## 2. Base Packages
@@ -64,7 +64,7 @@ tailscale ip -4
 ```bash
 mkdir -p ~/src
 cd ~/src
-git clone git@github.com:malikaperera/home-lab.git
+git clone git@github.com:<your-github-username>/home-lab.git
 cd home-lab
 cp .env.example .env
 ```

@@ -8,6 +8,6 @@ services:
     environment:
       - SLSKD_REMOTE_CONFIGURATION=true
     volumes:
-      - /home/malika/homelab/slskd/config:/app
-      - /home/malika/homelab/slskd/downloads:/downloads
+      - ./config:/app
+      - ./downloads:/downloads
     restart: unless-stopped

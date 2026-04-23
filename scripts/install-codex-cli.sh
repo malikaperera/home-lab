@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-echo "==> Installing Codex CLI for ORION server use"
+echo "==> Installing Codex CLI for this server"
 
 if [[ "$(uname -s)" != "Linux" ]]; then
   echo "This installer is intended for the Ubuntu/Linux server." >&2
@@ -36,20 +36,20 @@ sudo npm install -g @openai/codex@latest
 mkdir -p "$HOME/.codex"
 
 cat > "$HOME/.codex/AGENTS.md" <<'EOF'
-# ORION Server Codex Context
+# Server Codex Context
 
-This machine is the always-on ORION/Roderick server.
+This machine is the always-on agent server.
 
 Before changing services, read:
 
-- ~/src/homelab/docs/server-desktop-split.md
-- ~/src/homelab/docs/orion-system-context.md
+- the repository's `docs/server-desktop-split.md`
+- the repository's `docs/agent-system-context.md`
 
 Important boundaries:
 
 - The server owns the dashboard, API, agents, Langfuse, and persistent databases.
-- The Windows desktop is optional GPU acceleration only after migration.
-- Do not run duplicate Roderick/Zuko/Forge stacks on both machines.
+- The desktop is optional GPU acceleration only after migration.
+- Do not run duplicate service stacks on both machines.
 - Preserve data/roderick.db, memory/, browser profiles, and CV files.
 - Prefer safe, observable changes with clear rollback notes.
 EOF
@@ -62,5 +62,4 @@ echo "Next steps:"
 echo "1. Run: codex"
 echo "2. Complete the ChatGPT/OpenAI sign-in flow."
 echo "3. Then run Codex from the repo you want to work in, for example:"
-echo "   cd ~/src/telegram-claude-agent && codex"
-
+echo "   cd \"\$(git rev-parse --show-toplevel)\" && codex"

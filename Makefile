@@ -1,5 +1,4 @@
 .PHONY: monitoring-up monitoring-down monitoring-logs \
-        plex-up plex-down plex-logs \
         adblock-up adblock-down \
         infra-up infra-down \
         up down ps logs
@@ -16,16 +15,6 @@ monitoring-down:
 monitoring-logs:
 	docker compose $(ENV_FILE) -f infra/docker-compose.monitoring.yml logs -f
 
-## Plex/media stack (Plex, qBittorrent, Radarr, Sonarr, Jellyseerr)
-plex-up:
-	docker compose $(ENV_FILE) -f infra/docker-compose.plex.yml up -d
-
-plex-down:
-	docker compose $(ENV_FILE) -f infra/docker-compose.plex.yml down
-
-plex-logs:
-	docker compose $(ENV_FILE) -f infra/docker-compose.plex.yml logs -f
-
 ## Ad blocker (Pi-hole)
 adblock-up:
 	docker compose $(ENV_FILE) -f adblock/docker-compose.yml up -d
@@ -41,10 +30,10 @@ infra-down:
 	docker compose $(ENV_FILE) -f infra/docker-compose.infra.yml down
 
 ## Bring everything up
-up: monitoring-up adblock-up infra-up plex-up
+up: monitoring-up adblock-up infra-up
 
 ## Bring everything down
-down: monitoring-down adblock-down infra-down plex-down
+down: monitoring-down adblock-down infra-down
 
 ## Status of all containers
 ps:
