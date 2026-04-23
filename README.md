@@ -4,6 +4,29 @@ Self-hosted infrastructure and AI automation lab built around a dedicated Ubuntu
 
 This repository documents the system design, service layout, and operational practices behind a rebuildable homelab. The focus is practical: open-source first, local-first, observable, and simple to recover.
 
+## Project Summary
+
+Built a self-hosted infrastructure platform for AI-assisted workflows, monitoring, and automation. The system separates always-on services from heavy compute, uses containerized services for repeatable deployment, and includes observability, remote access, and agent orchestration for day-to-day operations.
+
+## Tech Stack
+
+- Ubuntu Server
+- Docker and Docker Compose
+- Tailscale
+- Prometheus, Grafana, Node Exporter, cAdvisor, Loki, Promtail, Alertmanager
+- n8n
+- Langfuse
+- Ollama and llama.cpp
+- Telegram bots and approval workflows
+
+## Outcome
+
+- Repeatable infrastructure layout with clear separation of concerns
+- Centralized visibility through dashboards and alerts
+- Remote administration over private networking and SSH
+- Agent-based task routing for monitoring, research, and automation
+- Documentation that supports recovery, onboarding, and future expansion
+
 ## Architecture
 
 - Mini PC: always-on infrastructure node running Ubuntu Server, Docker, Tailscale, dashboards, monitoring, Telegram bots, and lightweight agents.
