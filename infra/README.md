@@ -5,6 +5,7 @@ Compose files and server-level configuration live here.
 Current files:
 
 - `docker-compose.monitoring.yml`: Prometheus, Grafana, Node Exporter, and cAdvisor.
+- `docker-compose.plex.yml`: Plex, qBittorrent, Radarr, Sonarr, and Jellyseerr. Runtime config/data paths intentionally remain under `/home/malika/docker/plex`, `/mnt/plex`, and `/home/malika/orion-media` so migration into this repo does not reset service state.
 
 Future files:
 

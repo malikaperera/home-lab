@@ -1,0 +1,85 @@
+name: plex
+
+services:
+  plex:
+    image: lscr.io/linuxserver/plex:latest
+    container_name: plex
+    network_mode: host
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Australia/Melbourne
+      - VERSION=docker
+    volumes:
+      - /home/malika/docker/plex/config:/config
+      - /mnt/plex/media:/media
+      - /mnt/plex/transcode:/transcode
+    restart: unless-stopped
+
+  radarr:
+    image: lscr.io/linuxserver/radarr:latest
+    container_name: radarr
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Australia/Melbourne
+    volumes:
+      - /home/malika/docker/plex/radarr:/config
+      - /mnt/plex/media/movies:/movies
+      - /mnt/plex/downloads:/downloads
+    ports:
+      - "7878:7878"
+    restart: unless-stopped
+
+  sonarr:
+    image: lscr.io/linuxserver/sonarr:latest
+    container_name: sonarr
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Australia/Melbourne
+    volumes:
+      - /home/malika/docker/plex/sonarr:/config
+      - /mnt/plex/media/tv:/tv
+      - /mnt/plex/downloads:/downloads
+    ports:
+      - "8989:8989"
+    restart: unless-stopped
+
+  qbittorrent:
+    image: lscr.io/linuxserver/qbittorrent:latest
+    container_name: qbittorrent
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Australia/Melbourne
+      - WEBUI_PORT=8080
+      - TORRENTING_PORT=6881
+    volumes:
+      - /home/malika/docker/plex/qbittorrent:/config
+      - /mnt/plex/downloads:/downloads
+      - /home/malika/orion-media/downloads:/orion-downloads
+    ports:
+      - "8080:8080"
+      - "6881:6881"
+      - "6881:6881/udp"
+    restart: unless-stopped
+
+  jellyseerr:
+    image: fallenbagel/jellyseerr:latest
+    container_name: jellyseerr
+    init: true
+    environment:
+      - LOG_LEVEL=info
+      - TZ=Australia/Melbourne
+      - PORT=5055
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    volumes:
+      - /home/malika/docker/plex/jellyseerr:/app/config
+    ports:
+      - "5055:5055"
+    restart: unless-stopped
+    depends_on:
+      - radarr
+      - sonarr
