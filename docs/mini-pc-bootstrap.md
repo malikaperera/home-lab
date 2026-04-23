@@ -24,7 +24,7 @@ sudo apt install -y git curl htop neovim build-essential ca-certificates gnupg u
 From laptop/desktop:
 
 ```bash
-ssh <user>@<mini-pc-ip>
+ssh <user>@<mini-pc-ip-or-tailscale-ip>
 ```
 
 ## 4. Firewall
@@ -64,8 +64,8 @@ tailscale ip -4
 ```bash
 mkdir -p ~/src
 cd ~/src
-git clone https://github.com/malikaperera/homelab.git
-cd homelab
+git clone git@github.com:malikaperera/home-lab.git
+cd home-lab
 cp .env.example .env
 ```
 
@@ -79,7 +79,7 @@ docker compose -f infra/docker-compose.monitoring.yml ps
 Open Grafana through Tailscale or LAN:
 
 ```text
-http://<mini-pc-ip>:3000
+http://<mini-pc-ip-or-tailscale-ip>:3000
 ```
 
 ## Success Criteria

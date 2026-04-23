@@ -2,11 +2,11 @@
 
 This is the source of truth for what runs on the always-on mini PC server versus what stays on the Windows desktop after migration.
 
-The goal is simple: the server is the home of ORION. The desktop becomes an optional acceleration box and personal workstation, not a second copy of the system.
+The goal is simple: the server is the home of the system. The desktop becomes an optional acceleration box and personal workstation, not a second copy of the system.
 
 ## Operating Principle
 
-The mini PC server is optimized for availability, fast coordination, and continuous background progress. It should make Roderick, Orion, and Zuko feel responsive to Malika at all times.
+The mini PC server is optimized for availability, fast coordination, and continuous background progress. It should make the primary agents feel responsive at all times.
 
 The desktop PC is the heavy reasoning lane. When the desktop is online, large-model work should route there. When it is offline, heavyweight reasoning should be queued, summarized, delayed, or processed slowly in the background on the server without degrading user-facing responsiveness.
 

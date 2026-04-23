@@ -1,24 +1,24 @@
 # Codex Server Setup
 
-This sets up Codex CLI on the ORION mini PC/server so Codex can work there in the same practical role as Claude: an interactive coding agent inside the server environment.
+This sets up Codex CLI on the mini PC/server so Codex can work there as an interactive coding agent inside the server environment.
 
-Codex on the server is for development, maintenance, migration work, and audits. It is not a replacement for the ORION runtime agents. Roderick, Forge, Zuko, Sentinel, Langfuse, and the dashboard still run as normal services.
+Codex on the server is for development, maintenance, migration work, and audits. It is not a replacement for the runtime agents or services that keep the lab running.
 
 ## One-Time SSH Access
 
-From the server console, add the desktop public key so Codex on the desktop can SSH into the server:
+From the server console, add a trusted public key so Codex on the desktop can SSH into the server:
 
 ```bash
 mkdir -p ~/.ssh
 chmod 700 ~/.ssh
-printf '%s\n' 'ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOztzNeS/1n5G4dEnigCl2UdE48YgdXX8KvWpKEYaqto amali@DESKTOP-N54LKD6' >> ~/.ssh/authorized_keys
+printf '%s\n' 'ssh-ed25519 <public-key> <comment>' >> ~/.ssh/authorized_keys
 chmod 600 ~/.ssh/authorized_keys
 ```
 
 Then test from the desktop:
 
 ```powershell
-ssh <server-user>@100.101.76.104 "uname -a && whoami"
+ssh <server-user>@<server-host-or-tailscale-ip> "uname -a && whoami"
 ```
 
 Use the real Linux username on the server.
@@ -30,8 +30,8 @@ On the server:
 ```bash
 mkdir -p ~/src
 cd ~/src
-git clone https://github.com/malikaperera/homelab.git
-cd homelab
+git clone git@github.com:malikaperera/home-lab.git
+cd home-lab
 bash scripts/install-codex-cli.sh
 ```
 
@@ -55,7 +55,7 @@ Complete the sign-in flow.
 After sign-in, run Codex from the repo you want to work on:
 
 ```bash
-cd ~/src/telegram-claude-agent
+cd ~/src/home-lab
 codex
 ```
 
@@ -77,5 +77,4 @@ git --version
 docker compose version
 ```
 
-Codex is ready when it opens from `~/src/telegram-claude-agent` and can see the repo, Git status, Docker Compose files, and homelab docs.
-
+Codex is ready when it opens from `~/src/home-lab` and can see the repo, Git status, Docker Compose files, and homelab docs.

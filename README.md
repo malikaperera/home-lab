@@ -1,14 +1,14 @@
 # Homelab
 
-Self-hosted infrastructure for the ORION/Roderick agent ecosystem on a dedicated Ubuntu Server mini PC.
+Self-hosted infrastructure and AI automation lab built around a dedicated Ubuntu Server mini PC, a separate compute desktop, and a modular container stack for observability, workflow automation, and agent coordination.
 
-This repo is the source of truth for the home server setup, monitoring stack, container layout, and learning notes. It is deliberately boring infrastructure: open-source first, local-first, observable, and easy to rebuild.
+This repository documents the system design, service layout, and operational practices behind a rebuildable homelab. The focus is practical: open-source first, local-first, observable, and simple to recover.
 
-## Target Architecture
+## Architecture
 
 - Mini PC: always-on infrastructure node running Ubuntu Server, Docker, Tailscale, dashboards, monitoring, Telegram bots, and lightweight agents.
-- Desktop PC: heavy local inference node for larger Ollama/llama.cpp models.
-- iPhone/laptop: control surfaces through Tailscale, Telegram, and web dashboards.
+- Desktop PC: heavy local inference node for larger Ollama and llama.cpp workloads.
+- iPhone and laptop: control surfaces through Tailscale, Telegram, SSH, and web dashboards.
 
 ## Core Services
 
@@ -17,11 +17,19 @@ This repo is the source of truth for the home server setup, monitoring stack, co
 - Prometheus, Node Exporter, cAdvisor, and Grafana for observability
 - Langfuse for LLM traces where useful
 - n8n for workflow automation
-- ORION/Roderick agent services as they are migrated from the Windows workstation
+- Multi-agent orchestration services for task routing, monitoring, and approvals
+
+## Showcase Highlights
+
+- Self-hosted infrastructure with a clear separation between always-on services and heavy compute
+- Observability stack with metrics, dashboards, and alerting
+- Containerized services with repeatable bootstrap and recovery steps
+- AI workflow plumbing for agent coordination, telemetry, and automation
+- Documentation-first design that makes the system easier to operate and explain
 
 ## Agent Model
 
-The personal AI ecosystem keeps clear role boundaries:
+The AI ecosystem keeps clear role boundaries:
 
 - Roderick: orchestrator and user-facing chief of staff
 - Merlin: research

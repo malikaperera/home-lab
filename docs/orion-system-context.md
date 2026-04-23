@@ -1,6 +1,6 @@
 # ORION System Context
 
-ORION is Malika Perera's self-hosted personal multi-agent AI ecosystem. It is intended to run on a dedicated Linux mini PC with optional heavy inference on the desktop PC.
+ORION is a self-hosted personal multi-agent AI ecosystem. It is intended to run on a dedicated Linux mini PC with optional heavy inference on a desktop PC.
 
 ## Purpose
 
@@ -8,10 +8,8 @@ ORION automates workflows, supports DevOps learning, performs business and marke
 
 The system uses specialized agents coordinated by a central orchestrator rather than one monolithic assistant.
 
-## Founder Context
+## Owner Context
 
-- Founder: Malika Perera
-- Location: Melbourne, Australia
 - Technical background: automation engineering, infrastructure operations, DevOps learning, Python/scripting, AI agent systems
 - Preferences: free/open-source software, local models where possible, self-hosted infrastructure, understandable systems
 
@@ -19,7 +17,7 @@ The system uses specialized agents coordinated by a central orchestrator rather 
 
 ### Roderick
 
-Orchestrator and personal AI assistant. Coordinates agents, routes tasks, maintains system state, summarizes outputs, manages approvals, and communicates with Malika.
+Orchestrator and personal AI assistant. Coordinates agents, routes tasks, maintains system state, summarizes outputs, manages approvals, and communicates with the owner.
 
 Roderick should consolidate and delegate. It should not quietly duplicate work or perform specialist tasks that belong to another agent.
 
@@ -39,7 +37,7 @@ Monitoring, validation, and security agent. Watches system health, analyzes logs
 
 ### Zuko
 
-Job automation agent. Searches job listings, analyzes job descriptions, matches roles to Malika's skills, manages applications, and interacts with job platforms.
+Job automation agent. Searches job listings, analyzes job descriptions, matches roles to the owner's skills, manages applications, and interacts with job platforms.
 
 ### Atlas
 
@@ -91,7 +89,7 @@ Suggested model families:
 3. Sentinel consumes metrics and logs.
 4. Sentinel detects anomalies.
 5. Sentinel alerts Roderick.
-6. Roderick notifies Malika.
+6. Roderick notifies the owner.
 7. Atlas explains the issue and learning angle.
 
 ## Human Control Interface
@@ -102,7 +100,7 @@ Approval flow example:
 
 1. Forge proposes a file or infrastructure change.
 2. Roderick sends an approval request.
-3. Malika approves or rejects.
+3. The owner approves or rejects.
 4. Forge executes only after approval.
 5. Sentinel validates.
 6. Atlas documents what changed and why.
@@ -121,7 +119,7 @@ Preferred implementation sequence:
 
 1. Merlin researches the solution.
 2. Atlas explains the concept.
-3. Malika can run a command manually once if educational.
+3. The owner can run a command manually once if educational.
 4. Forge automates repeatable steps.
 5. Sentinel monitors and validates.
 
