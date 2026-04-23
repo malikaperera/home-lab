@@ -4,8 +4,6 @@ Self-hosted infrastructure and AI automation lab built around a dedicated Ubuntu
 
 This repository documents the system design, service layout, and operational practices behind a rebuildable homelab. The focus is practical: open-source first, local-first, observable, and simple to recover.
 
-> Recruiter snapshot: a production-style homelab with containerized services, private networking, monitoring, alerting, automation, and AI-assisted workflows designed for repeatable operation.
-
 ## Project Summary
 
 Built a self-hosted infrastructure platform for AI-assisted workflows, monitoring, and automation. The system separates always-on services from heavy compute, uses containerized services for repeatable deployment, and includes observability, remote access, and agent orchestration for day-to-day operations.
