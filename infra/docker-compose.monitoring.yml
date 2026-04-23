@@ -2,6 +2,7 @@ services:
   prometheus:
     image: prom/prometheus:v2.54.1
     container_name: prometheus
+    init: true
     restart: unless-stopped
     command:
       - "--config.file=/etc/prometheus/prometheus.yml"
@@ -21,6 +22,7 @@ services:
   grafana:
     image: grafana/grafana-oss:11.2.0
     container_name: grafana
+    init: true
     restart: unless-stopped
     ports:
       - "${GRAFANA_PORT:-3002}:3000"
@@ -43,6 +45,7 @@ services:
   loki:
     image: grafana/loki:3.0.0
     container_name: loki
+    init: true
     restart: unless-stopped
     ports:
       - "${LOKI_PORT:-3100}:3100"
@@ -56,6 +59,7 @@ services:
   promtail:
     image: grafana/promtail:3.0.0
     container_name: promtail
+    init: true
     restart: unless-stopped
     volumes:
       - ../monitoring/promtail/config.yml:/etc/promtail/config.yml:ro
@@ -71,6 +75,7 @@ services:
   alertmanager:
     image: prom/alertmanager:v0.27.0
     container_name: alertmanager
+    init: true
     restart: unless-stopped
     ports:
       - "${ALERTMANAGER_PORT:-9093}:9093"
@@ -86,6 +91,7 @@ services:
   node-exporter:
     image: prom/node-exporter:v1.8.2
     container_name: node-exporter
+    init: true
     restart: unless-stopped
     command:
       - "--path.rootfs=/host"
@@ -98,6 +104,7 @@ services:
   cadvisor:
     image: gcr.io/cadvisor/cadvisor:v0.49.1
     container_name: cadvisor
+    init: true
     restart: unless-stopped
     privileged: true
     ports:
