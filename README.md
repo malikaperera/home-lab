@@ -6,12 +6,6 @@ This repository documents the system design, service layout, and operational pra
 
 > Recruiter snapshot: a production-style homelab with containerized services, private networking, monitoring, alerting, automation, and AI-assisted workflows designed for repeatable operation.
 
-## CV Snapshot
-
-- Built a self-hosted infrastructure platform with clear separation between always-on services and heavier compute workloads.
-- Added observability, alerting, and private remote access to keep the system manageable and recoverable.
-- Integrated AI workflow components for task routing, automation, and system coordination.
-
 ## Project Summary
 
 Built a self-hosted infrastructure platform for AI-assisted workflows, monitoring, and automation. The system separates always-on services from heavy compute, uses containerized services for repeatable deployment, and includes observability, remote access, and agent orchestration for day-to-day operations.
