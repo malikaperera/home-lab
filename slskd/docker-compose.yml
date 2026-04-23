@@ -1,0 +1,13 @@
+services:
+  slskd:
+    image: slskd/slskd:latest
+    container_name: slskd
+    ports:
+      - "5030:5030"
+      - "5031:5031"
+    environment:
+      - SLSKD_REMOTE_CONFIGURATION=true
+    volumes:
+      - /home/malika/homelab/slskd/config:/app
+      - /home/malika/homelab/slskd/downloads:/downloads
+    restart: unless-stopped
