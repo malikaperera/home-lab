@@ -488,8 +488,8 @@
             "uid": "Prometheus"
           },
           "editorMode": "code",
-          "expr": "1 - (node_filesystem_avail_bytes{mountpoint=\"/mnt/plex\",fstype!=\"tmpfs\"} / node_filesystem_size_bytes{mountpoint=\"/mnt/plex\",fstype!=\"tmpfs\"})",
-          "legendFormat": "Plex disk used",
+          "expr": "1 - (node_filesystem_avail_bytes{mountpoint=\"/mnt/media\",fstype!=\"tmpfs\"} / node_filesystem_size_bytes{mountpoint=\"/mnt/media\",fstype!=\"tmpfs\"})",
+          "legendFormat": "Media disk used",
           "range": true,
           "refId": "B"
         }

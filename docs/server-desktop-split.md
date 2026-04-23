@@ -1,4 +1,4 @@
-# ORION Server/Desktop Split
+# Server/Desktop Split
 
 This is the source of truth for what runs on the always-on mini PC server versus what stays on the Windows desktop after migration.
 
@@ -58,13 +58,13 @@ Full-time services:
 
 Server-local LLM work should prefer:
 
-- `qwen3:4b` for Roderick/Orion/Zuko user-facing coordination.
+- `qwen3:4b` for Roderick/Zuko user-facing coordination.
 - `qwen3:8b` for bounded background research/planning when desktop GPU is unavailable.
 - `qwen2.5-coder:7b` for local code/validation work.
 
 Avoid making heavy desktop models required for server boot or normal operation.
 
-Later server services can include Pi-hole or AdGuard Home, Portainer, n8n, media services, and the separate ORION astrology stack.
+Later server services can include Pi-hole or AdGuard Home, Portainer, n8n, and media services.
 
 ## Desktop PC: Optional Heavy Compute Only
 

@@ -1,10 +1,10 @@
-# ORION System Context
+# Agent System Context
 
-ORION is a self-hosted personal multi-agent AI ecosystem. It is intended to run on a dedicated Linux mini PC with optional heavy inference on a desktop PC.
+This is a self-hosted personal multi-agent AI ecosystem. It is intended to run on a dedicated Linux mini PC with optional heavy inference on a desktop PC.
 
 ## Purpose
 
-ORION automates workflows, supports DevOps learning, performs business and market research, assists with job applications, monitors infrastructure, and supports creative and astrology-related projects.
+The system automates workflows, supports DevOps learning, performs business and market research, assists with job applications, monitors infrastructure, and supports creative projects.
 
 The system uses specialized agents coordinated by a central orchestrator rather than one monolithic assistant.
 
@@ -41,7 +41,7 @@ Job automation agent. Searches job listings, analyzes job descriptions, matches 
 
 ### Atlas
 
-Teacher and knowledge mentor. Explains technical concepts, infrastructure changes, agent actions, and system behaviour so ORION remains a learning environment, not a black box.
+Teacher and knowledge mentor. Explains technical concepts, infrastructure changes, agent actions, and system behaviour so the ecosystem remains a learning environment, not a black box.
 
 ### Operator
 
@@ -50,10 +50,6 @@ Business operations agent. Coordinates approved business tasks, tracks initiativ
 ### Venture
 
 Business opportunity agent. Researches markets, evaluates ventures, and produces strategy around monetization and opportunities.
-
-### Orion
-
-Astrology intelligence system. Handles natal/transit analysis, astrological data, and forecast logic. It is separate from infrastructure tasks.
 
 ## Infrastructure Plan
 

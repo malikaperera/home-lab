@@ -1,5 +1,5 @@
 # Media
 
-Media service orchestration now lives in `../infra/docker-compose.plex.yml`.
+Media service planning and notes live here.
 
-Keep this separate from ORION and agent workloads so the mini PC remains stable as an infrastructure node first.
+Keep media workloads separate from the core infrastructure stack so the mini PC remains stable as an infrastructure node first.
