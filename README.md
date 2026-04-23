@@ -1,4 +1,4 @@
-# Malika Homelab
+# Homelab
 
 Self-hosted infrastructure for the ORION/Roderick agent ecosystem on a dedicated Ubuntu Server mini PC.
 
